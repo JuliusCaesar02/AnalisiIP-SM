@@ -28,7 +28,7 @@ public class Sub {
 				}
 			}
 			catch(ArrayIndexOutOfBoundsException | NumberFormatException exception) {
-			   System.out.println("È stata riscontrata un'eccezione! Verificare il formato dell'IP/SM");
+			   System.out.println("Ãˆ stata riscontrata un'eccezione! Verificare il formato dell'IP/SM");
 			   System.exit(0);
 			}
 		}
@@ -141,7 +141,7 @@ public class Sub {
 	}
 	public void getByte (int[] aux) {
 		for (int i = 0; i < 4; i++) {
-			System.out.println("Il byte " +(i+1) +" è " +aux[i]);
+			System.out.println("Il byte " +(i+1) +" Ã¨ " +aux[i]);
 		}
 	}
 	public String setRange(int[] NetSubbyte, int importato) {
@@ -206,6 +206,4 @@ public class Sub {
 		aux = setBinaryBit(decon((indirizzo.ip))).substring(indirizzo.netBit, indirizzo.subBit + indirizzo.netBit); 
 		return Integer.parseInt(aux,2) + 1;  
 	}
-	//192.168.128.0
-	//255.255.255.252
 }
