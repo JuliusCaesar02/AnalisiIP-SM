@@ -23,13 +23,13 @@ public class Sub {
 			try {
 				aux[i] = Integer.parseInt(parts[i]);
 				if(aux[i] > 255) {
-					System.out.println("ERRORE! Il byte " +aux[i] +" non esiste");
-					System.exit(0);
+					aux[0] = -2;
+					return aux;
 				}
 			}
 			catch(ArrayIndexOutOfBoundsException | NumberFormatException exception) {
-			   System.out.println("È stata riscontrata un'eccezione! Verificare il formato dell'IP/SM");
-			   System.exit(0);
+			   aux[0] = -1;
+			   return aux;
 			}
 		}
 		return aux;
@@ -141,7 +141,7 @@ public class Sub {
 	}
 	public void getByte (int[] aux) {
 		for (int i = 0; i < 4; i++) {
-			System.out.println("Il byte " +(i+1) +" è " +aux[i]);
+			System.out.println("Il byte " +(i+1) +" � " +aux[i]);
 		}
 	}
 	public String setRange(int[] NetSubbyte, int importato) {
@@ -153,29 +153,32 @@ public class Sub {
 		rangeAux[3] = NetSubbyte[3] + importato;
 		return Arrays.toString(rangeAux); 
 	}
-	public void setBitMap() {
+	public String setBitMap() {
+		String aux;
+		aux = new String();
 		int j = 0;
 		for (i = 1; i <= indirizzo.netBit; i++) {
-			System.out.print("n");
+			aux += "n";
 			if(i % 8 == 0) {
-				System.out.print(".");
+				aux += ".";
 			}
 		}
 		j = i;
 		for (i = j; i <= indirizzo.subBit + indirizzo.netBit; i++) {
-			System.out.print("s");
+			aux += "s";
 			if(i % 8 == 0) {
-				System.out.print(".");
+				aux += ".";
 			}
 		}
 		j = i;
 		for (i = j; i <= indirizzo.hostBit + indirizzo.subBit + indirizzo.netBit; i++) {
-			System.out.print("h");
+			aux += "h";
 			if(i % 8 == 0 && i != 32) {
-				System.out.print(".");
+				aux += ".";
 			}
 		}
-		System.out.println("");
+		aux += "";
+		return aux;
 	}
 	public String setBinaryBit (int[] byteIPSM) {
 		String aux;
